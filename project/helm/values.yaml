@@ -8,14 +8,14 @@ service:
   type: ClusterIP
 
 image:
-  repository: techtrends
+  repository: duemoselund/techtrends
   tag: latest
   pullPolicy: IfNotPresent
 
 replicaCount: 1
 
 resources:
-  request:
+  requests:
     memory: 64Mi
     cpu: 250m
   limits:
