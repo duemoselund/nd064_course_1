@@ -46,13 +46,24 @@ def index():
 # Define health status 
 @app.route('/healthz')
 def healthz():
-    response = app.response_class(
-            response=json.dumps({"result":"OK - healthy"}),
-            status=200,
-            mimetype='application/json'
-    )
-    app.logger.info('Status request successful')
-    return response
+    try:
+        connection = get_db_connection()
+        connection.execute('SELECT * FROM posts LIMIT 1')
+        connection.close()
+        response = app.response_class(
+                response=json.dumps({"result":"OK - healthy"}),
+                status=200,
+                mimetype='application/json'
+        )
+        app.logger.info('Status request successful')
+        return response
+    except Exception as e:
+        app.logger.error('Health check failed: {}'.format(str(e)))
+        return app.response_class(
+                response=json.dumps({"result":"ERROR - unhealthy"}),
+                status=500,
+                mimetype='application/json'
+        )
 
 # Define metrics
 @app.route('/metrics')
