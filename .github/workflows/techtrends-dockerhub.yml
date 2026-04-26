@@ -11,9 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - 
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: duemoselund/techtrends
+          tags: |
+            type=sha                    # github commit
+            type=raw,value=latest       # latest version
+            type=semver,pattern={{version}}  # version nr
       - 
         name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -34,4 +43,5 @@ jobs:
           file: ./project/techtrends/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: duemoselund/techtrends:latest
+          tags: ${{ steps.meta.outputs.tags }}  
+          labels: ${{ steps.meta.outputs.labels }}
