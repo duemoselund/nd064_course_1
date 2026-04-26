@@ -1,11 +1,52 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+    # docker build -t techtrends .
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+    # docker run -p 7111:3111 techtrends:latest
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+    # docker logs 683fb355845a
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+    #[nimbin@fedora techtrends]$ docker ps
+CONTAINER ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+683fb355845a   techtrends:latest   "sh -c 'python init_…"   7 minutes ago   Up 7 minutes   0.0.0.0:7111->3111/tcp, [::]:7111->3111/tcp   keen_snyder
+[nimbin@fedora techtrends]$ docker logs 683fb355845a
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+2026-04-26 12:01:06,080 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2026-04-26 12:01:06,080 - INFO -  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+2026-04-26 12:01:27,197 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:27] "GET / HTTP/1.1" 200 -
+2026-04-26 12:01:27,215 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:27] "GET /static/css/main.css HTTP/1.1" 200 -
+2026-04-26 12:01:27,297 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:27] "GET /favicon.ico HTTP/1.1" 404 -
+2026-04-26 12:01:36,574 - INFO - Retrieved article: 2020 CNCF Annual Report
+2026-04-26 12:01:36,575 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:36] "GET /1 HTTP/1.1" 200 -
+2026-04-26 12:01:36,590 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:36] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:01:39,453 - INFO - Requested About Us page
+2026-04-26 12:01:39,454 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:39] "GET /about HTTP/1.1" 200 -
+2026-04-26 12:01:39,472 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:39] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:01:41,301 - INFO - Retrieved article: Kubernetes v1.20 Release Notes
+2026-04-26 12:01:41,301 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:41] "GET /3 HTTP/1.1" 200 -
+2026-04-26 12:01:41,317 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:41] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:01:42,969 - INFO - Retrieved article: CNCF Cloud Native Definition v1.0
+2026-04-26 12:01:42,969 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:42] "GET /5 HTTP/1.1" 200 -
+2026-04-26 12:01:42,983 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:42] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:01:47,603 - INFO - Metrics request successful
+2026-04-26 12:01:47,603 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:47] "GET /metrics HTTP/1.1" 200 -
+2026-04-26 12:01:52,361 - INFO - Status request successful
+2026-04-26 12:01:52,362 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:52] "GET /healthz HTTP/1.1" 200 -
+2026-04-26 12:01:57,116 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:57] "GET / HTTP/1.1" 200 -
+2026-04-26 12:01:57,133 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:57] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:01:58,474 - INFO - Retrieved article: 2020 CNCF Annual Report
+2026-04-26 12:01:58,475 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:58] "GET /1 HTTP/1.1" 200 -
+2026-04-26 12:01:58,490 - INFO - 172.17.0.1 - - [26/Apr/2026 12:01:58] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:02:01,489 - ERROR - Article 7 does not exist
+2026-04-26 12:02:01,490 - INFO - 172.17.0.1 - - [26/Apr/2026 12:02:01] "GET /7 HTTP/1.1" 404 -
+2026-04-26 12:02:01,504 - INFO - 172.17.0.1 - - [26/Apr/2026 12:02:01] "GET /static/css/main.css HTTP/1.1" 304 -
+2026-04-26 12:02:06,858 - INFO - 172.17.0.1 - - [26/Apr/2026 12:02:06] "GET / HTTP/1.1" 200 -
+2026-04-26 12:02:06,875 - INFO - 172.17.0.1 - - [26/Apr/2026 12:02:06] "GET /static/css/main.css HTTP/1.1" 304 -
+[nimbin@fedora techtrends]$ 
