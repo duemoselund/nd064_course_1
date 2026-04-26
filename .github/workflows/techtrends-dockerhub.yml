@@ -20,9 +20,9 @@ jobs:
         with:
           images: duemoselund/techtrends
           tags: |
-            type=sha                    # github commit
-            type=raw,value=latest       # latest version
-            type=semver,pattern={{version}}  # version nr
+            type=sha
+            type=raw,value=latest
+            type=semver,pattern={{version}}
       - 
         name: Set up QEMU
         uses: docker/setup-qemu-action@v4
