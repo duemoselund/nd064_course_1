@@ -5,6 +5,8 @@ service:
   port: 7111
 
 image:
+  repository: duemoselund/techtrends
+  tag: 1.0.1
   pullPolicy: Always
 
 replicaCount: 5
