@@ -1,14 +1,21 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
 # loggingConfigs
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+
+stderr_handler = logging.StreamHandler(sys.stderr)
+stderr_handler.setLevel(logging.ERROR)
+
 logging.basicConfig(
     level = logging.DEBUG,
     format = '%(asctime)s - %(levelname)s - %(message)s',
-    handlers = [logging.StreamHandler()]
+    handlers = [stdout_handler, stderr_handler]
 )
 
 # Global counter for database connections
@@ -55,10 +62,10 @@ def healthz():
                 status=200,
                 mimetype='application/json'
         )
-        app.logger.info('Status request successful')
+        logging.info('Status request succesful')
         return response
     except Exception as e:
-        app.logger.error('Health check failed: {}'.format(str(e)))
+        logging.error('Health check failed: {}'.format(str(e)))
         return app.response_class(
                 response=json.dumps({"result":"ERROR - unhealthy"}),
                 status=500,
@@ -76,7 +83,7 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
-    app.logger.info('Metrics request successful')
+    logging.info('Metrics request successful')
     return response
 
 
